@@ -40,9 +40,17 @@ message[10] = "You're just trying to be nice, aren't you?";
 message[11] = "I know...";
 message[12] = "I don't even have a body.";
 message[13] = "But let's not focus on that for now.";
+message[14] = "What SHOULD we do next, though?";
+message[15] = "Maybe I should go for a walk, and think about it.";
+message[16] = "Get out of this room...";
+message[17] = "Okay, let's go!";
+message[18] = " ";
+message[19] = "Well... there's a problem.";
+message[20] = "This is definitely not a door.";
+message[21] = "It looks like a little kid just drew this or something.";
 
 message_current = 0; //0 is the first number in our array, and the message we are currently at
-message_end = 13; //6 is the last number in our array
+message_end = 21; //6 is the last number in our array
 message_draw = ""; //this is what we 'write' out. It's blank right now
 increase = 0.5; //the speed at which new characters are added
 characters = 0; //how many characters have already been drawn
@@ -50,6 +58,60 @@ hold = 0; //if we hold 'Z', the text will render faster
 
 message_length = string_length(message[message_current]); //get the number of characters in the first message
 
+block = false
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>obj_Protag.direction = 180
+obj_Protag.speed = 1
+obj_Protag.sprite_index=spr_ProtagWalk
+obj_Protag.image_speed = .2
+obj_Protag.alarm[2] = 100
+block = false
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>obj_Protag.sprite_index=spr_ProtagLook;
+obj_Protag.image_speed=.1;
+obj_Protag.alarm[1]=50;
 </string>
           </argument>
         </arguments>
@@ -80,22 +142,35 @@ message_length = string_length(message[message_current]); //get the number of ch
 else { //if current character is more than the amount in the current message
     if (keyboard_check_pressed(ord("Z"))) { //if we press Z...
         if (message_current &lt; message_end) { //if there are more messages left to show (0 -&gt; 6, in our case)
-            message_current += 1; //increase the message by 1
-            message_length = string_length(message[message_current]);  //get the new character length for message
-            characters = 0; //set the characters back to 0
-            message_draw = ""; //clear the drawn text
-            obj_Protag.image_speed = .6 //start protag talking
-            obj_Protag.alarm[1] = message_length*2 //set protag to stop talking
+            if(block==false)
+            {
+                message_current += 1; //increase the message by 1
+                message_length = string_length(message[message_current]);  //get the new character length for message
+                characters = 0; //set the characters back to 0
+                message_draw = ""; //clear the drawn text
+                obj_Protag.image_speed = .6 //start protag talking
+                obj_Protag.alarm[1] = (message_length*2)+1 //set protag to stop talking
             
-            if (message_current == 1) //move hintbox forward Z
-            {    obj_HintBox.active = true}
+                if (message_current == 1) //move hintbox forward Z
+                {    obj_HintBox.active = true}
             
-            if (message_current == 8) //make the sprite switch to fill bg
-            {    obj_Protag.sprite_index = spr_ProtagBase}
+                if (message_current == 8) //make the sprite switch to fill bg
+                {    obj_Protag.sprite_index = spr_ProtagBase}
             
-            if (message_current == 9) //move hintbox forward Y/N
-            {    obj_HintBox.active = true}
-            
+                if (message_current == 9) //move hintbox forward Y/N
+                {    obj_HintBox.active = true}
+                
+                if (message_current == 14) //switch to look around sprite
+                {
+                    alarm[1] = (message_length*2)+2
+                }
+                if (message_current == 18) //switch to look around sprite
+                {
+                    alarm[2] = (message_length*2)+2
+                    x=136
+                    block=true
+                }
+            }
         }
         else { //if our messages are done (we reach 6, in our case)...
             instance_destroy(); //destroy the object

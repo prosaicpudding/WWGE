@@ -7,6 +7,8 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_ProtagBase</sprite>
+    <sprite>sprites\spr_ProtagWalk</sprite>
+    <sprite>sprites\spr_ProtagLook</sprite>
     <sprite>sprites\spr_ProtagClear</sprite>
   </sprites>
   <backgrounds name="background">
@@ -15,8 +17,8 @@
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_Protag</object>
-    <object>objects\obj_ProtagSpeech</object>
     <object>objects\obj_HintBox</object>
+    <object>objects\obj_ProtagSpeech</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_opening</room>
