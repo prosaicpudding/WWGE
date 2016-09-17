@@ -58,7 +58,7 @@ sprite_index=spr_ProtagBase
 image_speed = 0 
 image_index = 0
 
-obj_ProtagSpeech.message_current=19
+obj_ProtagSpeech.message_current=obj_ProtagSpeech.message_current+1
 obj_ProtagSpeech.message_length = string_length(obj_ProtagSpeech.message[obj_ProtagSpeech.message_current]);  //get the new character length for message
 obj_ProtagSpeech.characters = 0
 obj_ProtagSpeech.message_draw = ""
@@ -92,6 +92,14 @@ obj_ProtagSpeech.block=false
 {    sprite_index=spr_ProtagBase}
 image_speed = 0 
 image_index = 0
+
+if(obj_ProtagSpeech.message_current == 23)
+{
+    rm_opening.background_visible[6] = true
+    rm_opening.background_visible[7] = false
+    //obj_ProtagSpeech.
+    draw_set_colour(c_white);
+}
 
 </string>
           </argument>

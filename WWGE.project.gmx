@@ -7,12 +7,14 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_ProtagBase</sprite>
+    <sprite>sprites\spr_ProtagReach</sprite>
     <sprite>sprites\spr_ProtagWalk</sprite>
     <sprite>sprites\spr_ProtagLook</sprite>
     <sprite>sprites\spr_ProtagClear</sprite>
   </sprites>
   <backgrounds name="background">
-    <background>background\bg_room</background>
+    <background>background\bg_Room</background>
+    <background>background\bg_NoRoom</background>
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">

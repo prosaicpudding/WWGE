@@ -48,9 +48,12 @@ message[18] = " ";
 message[19] = "Well... there's a problem.";
 message[20] = "This is definitely not a door.";
 message[21] = "It looks like a little kid just drew this or something.";
+message[22] = "";
+message[23] = "Yep. That's definitel- Oh.";
+message[24] = "...Woah";
 
 message_current = 0; //0 is the first number in our array, and the message we are currently at
-message_end = 21; //6 is the last number in our array
+message_end = 24; //6 is the last number in our array
 message_draw = ""; //this is what we 'write' out. It's blank right now
 increase = 0.5; //the speed at which new characters are added
 characters = 0; //how many characters have already been drawn
@@ -149,7 +152,7 @@ else { //if current character is more than the amount in the current message
                 characters = 0; //set the characters back to 0
                 message_draw = ""; //clear the drawn text
                 obj_Protag.image_speed = .6 //start protag talking
-                obj_Protag.alarm[1] = (message_length*2)+1 //set protag to stop talking
+                obj_Protag.alarm[1] = (message_length*2) //set protag to stop talking
             
                 if (message_current == 1) //move hintbox forward Z
                 {    obj_HintBox.active = true}
@@ -170,6 +173,17 @@ else { //if current character is more than the amount in the current message
                     x=136
                     block=true
                 }
+                if (message_current == 22) //reach sprite, and set next speech action to go
+                {
+                    obj_Protag.sprite_index=spr_ProtagReach
+                    obj_Protag.alarm[2]=60
+                    block=true 
+                }
+               // if (message_current == 23) //reach sprite, and set next speech action to go
+               // {
+                    //alarm[3] = (message_length*2)+2
+                    
+               // }
             }
         }
         else { //if our messages are done (we reach 6, in our case)...
