@@ -27,13 +27,41 @@
             <kind>1</kind>
             <string>message[0] = "Press Z to interact";
 message[1] = "";
-message[2] = "Yes(Y) or No(N)?";
+message[2] = "Press Z to continue";
 message[3] = "";
+message[4] = "Yes(Y) or No(N)?";
+message[5] = "";
+message[6] = "Click objects to escape";
+message[7] = "";
 
 message_current = 0; //0 is the first number in our array, and the message we are currently at
-message_end = 3; //6 is the last number in our array
+message_end = 7; 
+yn_id = 4
 
 active = false
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>active = true
 </string>
           </argument>
         </arguments>
@@ -60,8 +88,8 @@ active = false
 {
    message_current+=1
    active = false
-   if (message_current==2)
-    obj_ProtagSpeech.block=true
+   if (message_current==yn_id)
+   { obj_ProtagSpeech.block=true}
 }
 if (message_current&gt;message_end)
     instance_destroy();
@@ -87,7 +115,7 @@ if (message_current&gt;message_end)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (message_current==2)
+            <string>if (message_current==yn_id)
 {
     obj_ProtagSpeech.message_current=10
     obj_ProtagSpeech.message_length = string_length(obj_ProtagSpeech.message[obj_ProtagSpeech.message_current]);  //get the new character length for message
@@ -123,7 +151,7 @@ if (message_current&gt;message_end)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (message_current==2)
+            <string>if (message_current==yn_id)
 {
     obj_ProtagSpeech.message_current=11
     obj_ProtagSpeech.message_length = string_length(obj_ProtagSpeech.message[obj_ProtagSpeech.message_current]);  //get the new character length for message

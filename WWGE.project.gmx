@@ -11,16 +11,28 @@
     <sprite>sprites\spr_ProtagWalk</sprite>
     <sprite>sprites\spr_ProtagLook</sprite>
     <sprite>sprites\spr_ProtagClear</sprite>
+    <sprite>sprites\spr_Invisible</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Room</background>
+    <background>background\bg_Room2</background>
     <background>background\bg_NoRoom</background>
   </backgrounds>
   <paths name="paths"/>
   <objects name="objects">
     <object>objects\obj_Protag</object>
-    <object>objects\obj_HintBox</object>
-    <object>objects\obj_ProtagSpeech</object>
+    <object>objects\obj_Painting</object>
+    <object>objects\obj_Window</object>
+    <object>objects\obj_Door</object>
+    <object>objects\obj_Button</object>
+    <objects name="Text">
+      <object>objects\obj_ProtagSpeech</object>
+      <object>objects\obj_PaintingText</object>
+      <object>objects\obj_DoorText</object>
+      <object>objects\obj_WindowText</object>
+      <object>objects\obj_ButtonText</object>
+      <object>objects\obj_HintBox</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_opening</room>
